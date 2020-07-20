@@ -29,6 +29,8 @@ const reducer = (state, action) => {
 };
 
 export default function useFetchJobs(params, page) {
+    const cancelToken = axios.CancelToken.source();
+
     const [state, dispatch] = useReducer(reducer, { jobs: [], loading: true });
 
     useEffect(() => {
@@ -36,6 +38,7 @@ export default function useFetchJobs(params, page) {
 
         axios
             .get(BASE_URL, {
+                cancelToken: cancelToken.token,
                 params: { markdown: true, page: page, ...params },
             })
             .then((res) => {
@@ -45,11 +48,16 @@ export default function useFetchJobs(params, page) {
                 });
             })
             .catch((e) => {
+                if (axios.isCancel(e)) return;
                 dispatch({
                     type: ACTIONS.ERROR,
                     payload: { error: e },
                 });
             });
+
+        return () => {
+            cancelToken.cancel();
+        };
     }, [params, page]);
 
     return state;
