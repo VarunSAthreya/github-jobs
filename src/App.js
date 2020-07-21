@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useFetchJobs from "./useFetchJobs";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Job from "./Job";
 import JobsPagination from "./JobsPagination";
 import SearchForm from "./SearchForm";
@@ -26,7 +26,7 @@ const App = () => {
             <h1 className="mb-4">GitHub Jobs</h1>
             <SearchForm params={params} onParamChange={handelParamChange} />
             <JobsPagination page={page} setPage={setPage} />
-            {loading && <h1>Loading...</h1>}
+            {loading && <Spinner animation="border" variant="primary" />}
             {error && <h1>Error, Try Refreshing...</h1>}
 
             {jobs.map((job) => {
