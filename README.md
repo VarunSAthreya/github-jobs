@@ -1,6 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b4f59e0c-79fa-426e-84c2-51feac100a0f/deploy-status)](https://app.netlify.com/sites/github-jobs-ui/deploys)
-
 # [GitHub-Jobs](https://github-jobs-ui.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b4f59e0c-79fa-426e-84c2-51feac100a0f/deploy-status)](https://app.netlify.com/sites/github-jobs-ui/deploys)
 
 **Website Build Using:**
 
